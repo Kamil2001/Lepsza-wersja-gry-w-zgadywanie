@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1542917962 source:c:\users\kamil\documents\readiris\programowanie\pseudolosowosc\main.cpp
+	<iostream>
+	<cstdlib>
+	<time.h>
+
