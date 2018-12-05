@@ -1,50 +1,82 @@
 #include <iostream>
+#include <fstream>
 #include <cstdlib>
-#include <time.h>
+#include <algorithm>
+#include <string>
 
 using namespace std;
 
+    string nick;
+   string temat;
+   string tresc[5];
+   string odpa[5];
+   string odpb[5];
+   string odpc[5];
+   string odpd[5];
+   string poprawna[5];
+
 int main()
 {
-    int liczba;
-    int strzal;
-    int odp;
-    do
+    int nr_linii=1;
+    string linia;
+    fstream plik;
+    int nr_pyt=0;
+    string odp;
+    int pkt=0;
+
+    plik.open("quiz.txt", ios::in);
+    if (plik.good() == false )
     {
-    cout << "Witaj pomyslalem sobie liczbe od 1 do 100!" << endl;
-    srand(time(NULL));
-    liczba= rand()%100 + 1;
-    cout << liczba ;
-    cout << "Zgadnij jaka"<< endl;
-    cout << "Zaczynamy!";
-    while(strzal!=liczba)
+        cout << "Plik nie istnieje.";
+        exit(0);
+    }
+    while(getline(plik, linia))
     {
-        cin >> strzal;
-        if ((strzal==liczba+1) || (strzal==liczba-1))
+        switch(nr_linii)
         {
-            cout << "Jestes blizej niz ci sie wydaje"<< endl;
+            case 1: temat=linia;                 break;
+            case 2: nick=linia;                  break;
+            case 3: tresc[nr_pyt] = linia;       break;
+            case 4: odpa[nr_pyt] = linia;        break;
+            case 5: odpb[nr_pyt] = linia;        break;
+            case 6: odpc[nr_pyt] = linia;        break;
+            case 7: odpd[nr_pyt] = linia;        break;
+            case 8: poprawna[nr_pyt] = linia;    break;
         }
-        else if(strzal>liczba)
+
+        if(nr_linii==8)
         {
-           cout << "Za duzo!"<< endl;
+            nr_linii=2;
+            nr_pyt++;
         }
-        else if (strzal<liczba)
-        {
-            cout << "Za malo!"<< endl;
-        }
-        else if(strzal==liczba)
-        {
-            cout << "Gratulacje!";
-             cout << "chcesz grac dalej?"<<endl;
-        cout <<"1. Tak 2.Nie"<< endl;
+        nr_linii++;
+    }
+    plik.close();
+    cout << "stworca tego quizu: " <<nick<<endl;
+    for (int i=0;i<=4;i++)
+    {
+        cout << tresc[i]<< endl;
+        cout <<"A. " <<odpa[i]<< endl;
+        cout <<"B. " <<odpb[i]<< endl;
+        cout <<"C. " <<odpc[i]<< endl;
+        cout <<"D. " <<odpd[i]<< endl;
+        cout <<"Udziel odpowiedzi: ";
         cin >> odp;
-        system("cls");
+        transform (odp.begin(),odp.end(),odp.begin(), :: tolower);
+
+        if(odp==poprawna[i])
+        {
+            cout << "poprawna odpowiedz!"<<endl;
+            pkt++;
         }
+        else
+        {
+            cout << "Zla odpowiedz :(."<< endl<<"Poprawna odp to: " <<poprawna[i]<<endl;
 
         }
-    }while(odp==1);
-    cout << "Dzieki za gre!";
+    }
 
+    cout << "Koniec quizu zdobyles " << pkt<< " punktow" ;
 
     return 0;
 }

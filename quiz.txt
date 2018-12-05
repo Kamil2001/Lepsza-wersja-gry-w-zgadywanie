@@ -1,0 +1,32 @@
+Programowanie w C++
+Kamil :)
+Kto jest najwiekszym koksem na silce:
+Simone
+Olaf
+Kalistenicy
+Wszyscy <3
+d
+Kto bierze najwiecej na martwy:
+Olaf
+Dawid
+Simone
+Szymon
+a
+Kim jest Krzys:
+Klistenik
+Street Workauter
+Soba
+Blizej nieokreslony
+c
+Ile jest osob na grupie "silacze olafa":
+10
+16
+18
+17
+b
+Kto najbardziej sie kozaczy:
+nikt 
+nikt
+nikt
+nikt 
+d

@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1544008890 source:c:\users\kamil\documents\readiris\programowanie\quiz\main.cpp
+	<iostream>
+	<fstream>
+	<cstdlib>
+	<algorithm>
+	<string>
+
